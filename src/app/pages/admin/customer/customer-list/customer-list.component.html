@@ -1,0 +1,202 @@
+<!-- Nav -->
+<ul class="nav nav-tabs mt-4 overflow-x border-0 mb-5">
+  <li class="nav-item">
+    <a routerLink="/dashboard/customers" class="nav-link active"> Customers</a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/dashboard/products" class="nav-link font-regular">Products</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link font-regular">File requests</a>
+  </li>
+</ul>
+
+<div
+  class="card-header d-flex justify-content-between align-items-center mt-5 bg-light"
+>
+  <h5 class="mb-0">Customers</h5>
+  <a
+    routerLink="/dashboard/add-customer"
+    class="btn d-inline-flex btn-sm btn-primary mx-1"
+  >
+    <span class="pe-2"> <i class="bi bi-plus"></i> </span>
+    <span>Create</span>
+  </a>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover table-nowrap">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Contact Name</th>
+        <th scope="col">Contact Title</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Customer Key</th>
+        <th scope="col">Region</th>
+        <th scope="col">Country</th>
+        <th scope="col">City</th>
+        <th scope="col">Street</th>
+        <th scope="col">Postal Code</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customerList">
+        <td>
+          <img
+            alt="..."
+            src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+            class="avatar avatar-sm rounded-circle me-2"
+          />
+          <a class="text-heading font-semibold" href="#">
+            {{ customer.contactName }}
+          </a>
+        </td>
+        <td>{{ customer.contactTitle }}</td>
+        <td>
+          <img
+            alt="..."
+            src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
+            class="avatar avatar-xs rounded-circle me-2"
+          />
+          <a class="text-heading font-semibold" href="#">
+            {{ customer.companyName }}
+          </a>
+        </td>
+        <td>{{ customer.phone }}</td>
+        <td>
+          <span class="badge badge-lg badge-dot">
+            <i class="bg-success"></i> {{ customer.customerKey }}
+          </span>
+        </td>
+
+        <td>{{ customer.region }}</td>
+        <td>{{ customer.country }}</td>
+        <td>{{ customer.city }}</td>
+        <td>{{ customer.street }}</td>
+        <td>{{ customer.postalCode }}</td>
+        <td class="text-end">
+          <a
+            routerLink="/dashboard/update-customer/{{ customer.id }}"
+            class="btn btn-sm btn-neutral"
+            >Edit</a
+          >
+          <button
+            (click)="openDeleteModal(customer.id)"
+            type="button"
+            class="btn btn-sm btn-square btn-neutral text-danger-hover"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+      <!-- <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Darlene Robertson </a> </td>
+                      <td> Apr 15, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Netguru </a> </td>
+                      <td> $2.750 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-warning"></i>Postponed </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Theresa Webb </a> </td>
+                      <td> Mar 20, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Figma </a> </td>
+                      <td> $4.200 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>Scheduled </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Kristin Watson </a> </td>
+                      <td> Feb 15, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Mailchimp </a> </td>
+                      <td> $3.500 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-dark"></i>Not discussed </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Cody Fisher </a> </td>
+                      <td> Apr 10, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Webpixels </a> </td>
+                      <td> $1.500 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-danger"></i>Canceled </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Robert Fox </a> </td>
+                      <td> Feb 15, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Dribbble </a> </td>
+                      <td> $3.500 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>Scheduled </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Darlene Robertson </a> </td>
+                      <td> Apr 15, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Netguru </a> </td>
+                      <td> $2.750 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-warning"></i>Postponed </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Theresa Webb </a> </td>
+                      <td> Mar 20, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Figma </a> </td>
+                      <td> $4.200 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>Scheduled </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Kristin Watson </a> </td>
+                      <td> Feb 15, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Mailchimp </a> </td>
+                      <td> $3.500 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-dark"></i>Not discussed </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr>
+                  <tr>
+                      <td> <img alt="..." src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Cody Fisher </a> </td>
+                      <td> Apr 10, 2021 </td>
+                      <td> <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2"> <a class="text-heading font-semibold" href="#"> Webpixels </a> </td>
+                      <td> $1.500 </td>
+                      <td> <span class="badge badge-lg badge-dot"> <i class="bg-danger"></i>Canceled </span> </td>
+                      <td class="text-end"> <a href="#" class="btn btn-sm btn-neutral">View</a> <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i class="bi bi-trash"></i> </button> </td>
+                  </tr> -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Are you sure to delete</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" (click)="delete()" class="btn btn-danger">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

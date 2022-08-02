@@ -1,0 +1,108 @@
+<!-- Nav -->
+<ul class="nav nav-tabs mt-4 overflow-x border-0 mb-5">
+  <li class="nav-item">
+    <a routerLink="/dashboard/customers" class="nav-link " routerLinkActive="active"> Customers</a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/dashboard/products" class="nav-link font-regular" routerLinkActive="active">Products</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link font-regular">File requests</a>
+  </li>
+</ul>
+
+<div
+  class="card-header d-flex justify-content-between align-items-center mt-5 bg-light"
+>
+  <h5 class="mb-0">Products</h5>
+  <a
+    routerLink="/dashboard/add-product"
+    class="btn d-inline-flex btn-sm btn-primary mx-1"
+  >
+    <span class="pe-2"> <i class="bi bi-plus"></i> </span>
+    <span>Create</span>
+  </a>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover table-nowrap">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">quantityPerUnit</th>
+        <th scope="col">unitPrice</th>
+        <th scope="col">unitsInStock</th>
+        <th scope="col">unitsOnOrder</th>
+        <th scope="col">reorderLevel</th>
+        <th scope="col">discontinued</th>
+        <th scope="col">name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productList">
+
+        <td>{{ product.quantityPerUnit }}</td>
+
+        <td>{{ product.unitPrice }}</td>
+
+
+        <td>{{ product.unitsInStock }}</td>
+        <td>{{ product.unitsOnOrder }}</td>
+
+        <td>{{ product.reorderLevel }}</td>
+        <td>{{ product.discontinued }}</td>
+        <td>{{ product.name }}</td>
+        <td class="text-end">
+          <a
+            routerLink="/dashboard/update-product/{{ product.id }}"
+            class="btn btn-sm btn-neutral"
+            >Edit</a
+          >
+          <button
+            (click)="openDeleteModal(product.id)"
+            type="button"
+            class="btn btn-sm btn-square btn-neutral text-danger-hover"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Are you sure to delete</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" (click)="delete()" class="btn btn-danger">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

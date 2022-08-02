@@ -1,0 +1,85 @@
+<form [formGroup]="productForm" (ngSubmit)="save()" *ngIf="productForm">
+
+
+  <div class="mb-3">
+    <label for="quantityPerUnit" class="form-label">quantityPerUnit</label>
+    <input
+      type="text"
+      class="form-control"
+      id="quantityPerUnit"
+      placeholder=""
+      formControlName="quantityPerUnit"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="unitPrice" class="form-label">unitPrice</label>
+    <input
+      type="text"
+      class="form-control"
+      id="unitPrice"
+      placeholder=""
+      formControlName="unitPrice"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="unitsInStock" class="form-label">unitsInStock</label>
+    <input
+      type="text"
+      class="form-control"
+      id="unitsInStock"
+      placeholder=""
+      formControlName="unitsInStock"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="unitsOnOrder" class="form-label">unitsOnOrder</label>
+    <input
+      type="text"
+      class="form-control"
+      id="unitsOnOrder"
+      placeholder=""
+      formControlName="unitsOnOrder"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="reorderLevel" class="form-label">reorderLevel</label>
+    <input
+      type="text"
+      class="form-control"
+      id="reorderLevel"
+      placeholder=""
+      formControlName="reorderLevel"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="discontinued" class="form-label">discontinued</label>
+    <input
+      type="text"
+      class="form-control"
+      id="discontinued"
+      placeholder=""
+      formControlName="discontinued"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder=""
+      formControlName="name"
+    />
+  </div>
+
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-warning">Save</button>
+  </div>
+</form>
