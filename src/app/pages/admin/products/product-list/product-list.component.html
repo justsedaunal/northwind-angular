@@ -15,7 +15,7 @@
   class="card-header d-flex justify-content-between align-items-center mt-5 bg-light"
 >
   <h5 class="mb-0">Products</h5>
-  <a
+  <a clickProduct
     routerLink="/dashboard/add-product"
     class="btn d-inline-flex btn-sm btn-primary mx-1"
   >
@@ -38,7 +38,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of productList">
+      <tr *ngFor="let product of productList | searchFilter: query : 'name'" appClickProduct >
 
         <td>{{ product.quantityPerUnit }}</td>
 

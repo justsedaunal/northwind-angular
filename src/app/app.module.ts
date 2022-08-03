@@ -17,6 +17,8 @@ import { ProductListComponent } from './pages/admin/products/product-list/produc
 import { ProductFormComponent } from './pages/admin/products/product-form/product-form.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { ClickProductDirective } from './directives/click-product/click-product.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UpdateCustomerComponent,
     ProductListComponent,
     ProductFormComponent,
+    SearchFilterPipe,
+    ClickProductDirective,
   ],
   imports: [
     BrowserModule,

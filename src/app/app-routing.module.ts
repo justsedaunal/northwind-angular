@@ -8,7 +8,8 @@ import { ProductListComponent } from './pages/admin/products/product-list/produc
 import { ProductFormComponent } from './pages/admin/products/product-form/product-form.component';
 
 const routes: Routes = [
-  { path: '', component:CustomerListComponent, pathMatch: 'full' },
+
+  { path: '',redirectTo:'', component:CustomerListComponent, pathMatch: 'full' },
   { path: "dashboard/customers" , component: CustomerListComponent},
   { path : "dashboard/add-customer",component:AddCustomerComponent},
   { path : "dashboard/update-customer/:id",component:UpdateCustomerComponent},

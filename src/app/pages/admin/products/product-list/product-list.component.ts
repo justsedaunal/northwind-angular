@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product/product.service';
+import { SearchListService } from 'src/app/services/search-list/search-list.service';
 declare var window: any;
 
 
@@ -15,14 +16,22 @@ export class ProductListComponent implements OnInit {
   productList!:Product[]
   deleteModal:any;
   idTodelete: number = 0;
+  query:any;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,private searchListService: SearchListService) { }
 
   ngOnInit(): void {
     this.getProductList();
     this.deleteModal = new window.bootstrap.Modal(
       document.getElementById('deleteModal')
     );
+
+    this.subscribeSearch();
+  }
+  subscribeSearch() {
+    this.searchListService.onSearch.subscribe(searcText => {
+      this.query = searcText;
+    })
   }
 
   openDeleteModal(id: number) {
