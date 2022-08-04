@@ -1,12 +1,24 @@
+
+
+
 <div class="h-screen flex-grow-1 overflow-y-lg-auto">
   <!-- Header -->
   <header class="bg-surface-primary border-bottom pt-6 pb-6">
     <div class="container-fluid">
       <div class="mb-npx">
         <div class="row align-items-center">
-          <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+          <div class="col-sm-6 col-12 mb-4 mb-sm-0"  >
             <!-- Title -->
-            <h1 class="h2 mb-0 ls-tight" routerLink="/">Application</h1>
+            <h1 *appWelcome="3000; then otherState" class="h2 mb-0 ls-tight" routerLink="/">
+              Welcome!
+            </h1>
+            <ng-template #otherState class="h2 mb-0 ls-tight" >
+              <h1  class="h2 mb-0 ls-tight" routerLink="/">
+                Northwind
+              </h1>
+
+             </ng-template>
+
           </div>
           <!-- Actions -->
           <div class="col-sm-6 col-12 text-sm-end">
@@ -18,7 +30,8 @@
                   placeholder="Search"
                   aria-label="Recipient's username"
                   aria-describedby="button-addon2"
-                  [(ngModel)]="query" id="listSearch"
+                  [(ngModel)]="query"
+                  id="listSearch"
                   (ngModelChange)="onSearch()"
                 />
                 <button
@@ -45,6 +58,8 @@
       </div>
     </div>
   </header>
+
+
   <!-- Main -->
   <main class="py-6 bg-surface-secondary">
     <div class="container-fluid">
@@ -174,7 +189,7 @@
         </div>
       </div>
       <div class="card shadow border-0 mb-7">
-        <router-outlet></router-outlet>
+        <router-outlet  ></router-outlet>
 
         <!-- <div class="card-footer border-0 py-5">
           <span class="text-muted text-sm"
@@ -185,3 +200,5 @@
     </div>
   </main>
 </div>
+
+

@@ -1,5 +1,6 @@
 <!-- Nav -->
-<ul class="nav nav-tabs mt-4 overflow-x border-0 mb-5">
+<div>
+<ul class="nav nav-tabs mt-4 overflow-x border-0 mb-5" >
   <li class="nav-item">
     <a routerLink="/dashboard/customers" class="nav-link " routerLinkActive="active"> Customers</a>
   </li>
@@ -7,14 +8,14 @@
     <a routerLink="/dashboard/products" class="nav-link font-regular" routerLinkActive="active">Products</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link font-regular">File requests</a>
+    <a   href="#" class="nav-link font-regular">File requests</a>
   </li>
 </ul>
 
 <div
   class="card-header d-flex justify-content-between align-items-center mt-5 bg-light"
 >
-  <h5 class="mb-0">Products</h5>
+  <h5  class="mb-0">Products</h5>
   <a clickProduct
     routerLink="/dashboard/add-product"
     class="btn d-inline-flex btn-sm btn-primary mx-1"
@@ -38,7 +39,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of productList | searchFilter: query : 'name'" appClickProduct >
+      <tr *ngFor="let product of productList | searchFilter :  'quantityPerUnit' : query " appClickProduct >
 
         <td>{{ product.quantityPerUnit }}</td>
 

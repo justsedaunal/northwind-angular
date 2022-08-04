@@ -9,7 +9,7 @@ export class ClickProductDirective {
 
   @HostListener('click',) onClick(){
 
-    this.elementRef.nativeElement.style.opacity = 0.1;
+    this.elementRef.nativeElement.style.opacity = 0.5;
 
   }
 

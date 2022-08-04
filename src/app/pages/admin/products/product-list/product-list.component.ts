@@ -28,9 +28,11 @@ export class ProductListComponent implements OnInit {
 
     this.subscribeSearch();
   }
+
+
   subscribeSearch() {
-    this.searchListService.onSearch.subscribe(searcText => {
-      this.query = searcText;
+    this.searchListService.onSearch.subscribe(searchText => {
+      this.query = searchText;
     })
   }
 

@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ClickProductDirective } from './directives/click-product/click-product.directive';
+import { AppMultipleDirective } from './directives/appMultiple/app-multiple.directive';
+import { WelcomeDirective } from './directives/welcome/welcome.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,8 @@ import { ClickProductDirective } from './directives/click-product/click-product.
     ProductFormComponent,
     SearchFilterPipe,
     ClickProductDirective,
+    AppMultipleDirective,
+    WelcomeDirective,
   ],
   imports: [
     BrowserModule,

@@ -9,12 +9,11 @@ import { SearchListService } from 'src/app/services/search-list/search-list.serv
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+
+
   public searchFilter:any=""
   query:any
-
-
-
-
 
   constructor(private searchListService:SearchListService) { }
 
